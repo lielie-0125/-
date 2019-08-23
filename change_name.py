@@ -1,13 +1,11 @@
-import os
+from pathlib import *
 
-file_path = os.path.dirname(__file__)
+file_path = Path.cwd()
 
-file_names = os.listdir(file_path)
-
-for file_name in file_names:
-    if os.path.isdir(file_name):
+for file_object in file_path.iterdir():
+    if file_object.is_dir():
         continue
-    else:
-        if file_name.endswith(".下载"):
-            new_file_name = file_name[:-3]
-            os.rename(os.path.join(file_path, file_name), os.path.join(file_path, new_file_name))
+    elif file_object.is_file():
+        if file_object.suffix == ".下载":
+            new_file_name = file_object.name[:-3]
+            file_object.rename(new_file_name)

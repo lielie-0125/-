@@ -1,6 +1,6 @@
-from pathlib import *
+import pathlib
 
-file_path = Path.cwd()
+file_path = pathlib.Path.cwd()
 
 for file_object in file_path.iterdir():
     if file_object.is_dir():
